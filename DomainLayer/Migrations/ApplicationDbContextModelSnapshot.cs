@@ -62,6 +62,10 @@ namespace DomainLayer.Migrations
                     b.Property<int>("NetPay")
                         .HasColumnType("int");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Salary")
                         .HasColumnType("int");
 

@@ -51,8 +51,33 @@ namespace RepositoryLayer.Repo
 
         public async Task<IEnumerable<string>> GetAllMonthsAsync()
         {
-            // Assuming you have a property "SalaryMonth" in your T entity
-            return await _context.Set<T>().Select(x => EF.Property<string>(x, "SalaryMonth")).Distinct().ToListAsync();
+
+            var orderedMonths = await _context.Set<T>()
+          .Select(x => EF.Property<string>(x, "SalaryMonth"))
+          .Distinct()
+          .ToListAsync();
+
+            // Define a mapping of month names to numerical values
+            var monthOrder = new Dictionary<string, int>
+    {
+        { "January", 1 },
+        { "February", 2 },
+        { "March", 3 },
+        { "April", 4 },
+        { "May", 5 },
+        { "June", 6 },
+        { "July", 7 },
+        { "August", 8 },
+        { "September", 9 },
+        { "October", 10 },
+        { "November", 11 },
+        { "December", 12 }
+    };
+
+            // Order the months based on the numerical values
+            orderedMonths = orderedMonths.OrderBy(m => monthOrder.GetValueOrDefault(m, int.MaxValue)).ToList();
+
+            return orderedMonths;
         }
 
         public async Task<IEnumerable<T>> GetByMonthAndEmployeeAsync(string month, int employeeId)

@@ -5,7 +5,7 @@
 namespace DomainLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class SMSReport : Migration
+    public partial class SMSRecord : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,6 +31,7 @@ namespace DomainLayer.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SalaryMonth = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Salary = table.Column<int>(type: "int", nullable: false),
                     Leaves = table.Column<int>(type: "int", nullable: false),

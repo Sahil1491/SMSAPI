@@ -10,6 +10,8 @@ namespace DomainLayer.Model
     {
         public int Id { get; set; }
         public int EmployeeId { get; set; }
+
+        public string Role { get; set; }
         public string SalaryMonth { get; set; }
         public int Salary { get; set; }
         public int Leaves { get; set; }
