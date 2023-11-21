@@ -9,8 +9,8 @@ namespace DomainLayer.Model
     public class Employee : IEntity
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string EmployeeName { get; set; }
+        
         public ICollection<SalaryRecord> SalaryRecords { get; set; }
     }
 }
